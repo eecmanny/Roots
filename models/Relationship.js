@@ -23,6 +23,10 @@ Relationship.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    sex: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     relationship: {
       type: DataTypes.STRING,
       allowNull: false,
