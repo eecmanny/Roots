@@ -10,7 +10,7 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
-    procee.env.DB_host,
+    procees.env.DB_HOST,
     {
       dialect: 'mysql',
       port: 3306
