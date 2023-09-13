@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS roots_db;
-CREATE DATABASE roots_db;
