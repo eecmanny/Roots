@@ -6,7 +6,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    console.log(1);
+    // console.log(1);
     // Get all Childrens and JOIN with user data
     let ChildrenData = await Children.findAll({
       // include: [
@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
       //   },
       // ],
     });
-    console.log(2);
+    // console.log(2);
     // Serialize data so the template can read it
     console.log(ChildrenData);
     ChildrenData = ChildrenData.map((Children) => Children.get({ plain: true }));
-    console.log(3);
+    // console.log(3);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       ChildrenData, 
