@@ -1,0 +1,42 @@
+{
+    "name": "Great-Grandpa",
+    "children": [
+        {
+            "name": "Grandma",
+            "children": [
+                {
+                    "name": "Mom",
+                    "children": [
+                        {
+                            "name": "Myself",
+                            "value": 3938
+                        },
+                        {
+                            "name": "Brother",
+                            "value": 3812
+                        },
+                        {
+                            "name": "Sister",
+                            "value": 6714
+                        }
+                    ]
+                },
+                {
+                    "name": "Uncle",
+                    "value": 3938
+                },
+                {
+                    "name": "Aunt",
+                    "value": 3812
+                }
+            ]
+
+        },
+    
+        {
+        "name": "Great-uncle",
+        "value": 1234
+        }
+        
+    ]
+}

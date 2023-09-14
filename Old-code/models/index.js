@@ -1,2 +1,0 @@
-const Relationship = require('./Relationship');
-
