@@ -11,22 +11,22 @@ Children.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    first_name: {
+    fullName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    Gender: {
-      type: DataTypes.STRING, 
-      allowNull: false,
-    },
+    // last_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    // age: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // },
+    // Gender: {
+    //   type: DataTypes.STRING, 
+    //   allowNull: false,
+    // },
     relative_to: {
       type: DataTypes.INTEGER,
       references: {
