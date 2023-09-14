@@ -1,29 +1,33 @@
 const router = require('express').Router();
+// const { geoClipRectangle } = require('d3');
 const { Children, User } = require('../models/index');
 const withAuth = require('../utils/auth');
 // const withAuth2 = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
+    console.log(1);
     // Get all Childrens and JOIN with user data
-    const ChildrenData = await Children.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
+    let ChildrenData = await Children.findAll({
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['name'],
+      //   },
+      // ],
     });
-
+    console.log(2);
     // Serialize data so the template can read it
-    const Children = ChildrenData.map((Children) => Children.get({ plain: true }));
-
+    console.log(ChildrenData);
+    ChildrenData = ChildrenData.map((Children) => Children.get({ plain: true }));
+    console.log(3);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      Children, 
+      ChildrenData, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
