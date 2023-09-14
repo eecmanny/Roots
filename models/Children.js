@@ -40,7 +40,7 @@ Children.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Children',
+    modelName: 'children',
   }
 );
 
