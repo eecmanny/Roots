@@ -14,24 +14,18 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">Roots</a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
   </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary" href="/signup">
+          <a class="button is-small is-success" href="/signup">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light" href="/login">
+          <a class="button is-small is-success is-light" href="/login">
             Log in
           </a>
-          <a class="button is-light" href="/logout">
+          <a class="button is-small is-success is-light" href="/logout">
             Logout
           </a>
         </div>
@@ -44,35 +38,20 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
+    <footer class="has-text-centered">
+      <p>
+        Please contact us at
+      <a href="*">(555)-555-5555</a>
+        and 
+        <a href="*">email@gmail.com</a>
+
+      </p>
+
     </footer>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1 id="logo">
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a id="login" href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+<footer>
+</footer>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
