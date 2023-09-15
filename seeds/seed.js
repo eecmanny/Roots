@@ -26,20 +26,19 @@ const seedChildDatabase = async () => {
 
 };
 
-// const seedgrandChildDatabase = async () => {
-//   await sequelize.sync({ force: false });
+const seedgrandChildDatabase = async () => {
+  await sequelize.sync({ force: false });
 
-//   const grandChildren = await GrandChildren.bulkCreate(grandchildData, {
-//     individualHooks: true,
-//     returning: true,
-//   });
-//   console.log(grandChildren);
-// };
+  const grandChildren = await GrandChildren.bulkCreate(grandchildData, {
+    individualHooks: true, returning: true,
+  });
+  console.log(grandChildren);
+};
 
 const seedJSON = async () => {
   await seedDatabase();
-await seedChildDatabase();
-// await seedgrandChildDatabase();
+  await seedChildDatabase();
+  await seedgrandChildDatabase();
 
   process.exit(0);
 };
