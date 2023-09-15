@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Children } = require('../models');
+const { User, Children, GrandChildren } = require('../models');
 
 const userData = require('./userData.json');
 const childData = require('./childData.json');
+const grandchildData = require('./grandchildData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -12,26 +13,37 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  process.exit(0);
+  // process.exit(0);
 };
 
 const seedChildDatabase = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
 
   const children = await Children.bulkCreate(childData, {
     individualHooks: true,
     returning: true,
   });
 
-  // for (const Childern of treeData) {
-  //   await Childern.create({
-  //     ...Childern,
-  //     user_id: users[Math.floor(Math.random() * users.length)].id,
-  //   });
-  // }
+};
+
+// const seedgrandChildDatabase = async () => {
+//   await sequelize.sync({ force: false });
+
+//   const grandChildren = await GrandChildren.bulkCreate(grandchildData, {
+//     individualHooks: true,
+//     returning: true,
+//   });
+//   console.log(grandChildren);
+// };
+
+const seedJSON = async () => {
+  await seedDatabase();
+await seedChildDatabase();
+// await seedgrandChildDatabase();
 
   process.exit(0);
 };
 
-seedChildDatabase();
-seedDatabase();
+seedJSON();
+
+
