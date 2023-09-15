@@ -1,5 +1,24 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User , Children, GrandChildren } = require('../../models');
+const withAuth = require('../../utils/auth');
+
+router.get('/', withAuth, async (req, res) => {
+  try {
+    const currentUser = await User.findOne({
+      where: {
+        id: req.session.user_id
+      },
+      include:[Children , GrandChildren]
+      //   ...req.body,
+      //   user_id: req.session.user_id,
+    }
+    );
+
+    res.status(200).json(currentUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
