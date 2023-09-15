@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>Roots</title>
   <link rel="stylesheet" href="./css/jass.css">
   <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/tree.css">
@@ -22,12 +22,16 @@
           <a class="button is-small is-success" href="/signup">
             <strong>Sign up</strong>
           </a>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+          <a class="button is-small is-success is-light" id="logout" href="/login">
+            Logout
+          </a>
+        {{else}}
           <a class="button is-small is-success is-light" href="/login">
             Log in
           </a>
-          <a class="button is-small is-success is-light" href="/logout">
-            Logout
-          </a>
+        {{/if}}
         </div>
       </div>
     </div>
