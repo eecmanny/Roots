@@ -1,0 +1,35 @@
+
+{
+    "name": "user",
+    "children": [
+        {
+            "name": "User(child1)",
+            "children": [
+                {
+                    "name": "User(grandchild1)",
+                    "children": [
+
+                    ]
+                },
+                {
+                    "name": "User(grandchild2)",
+                    "children": [
+
+                    ]
+                },
+                {
+                    "name": "User(grandchild3)",
+                    "children": [
+
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User(child2)",
+            "children": [
+
+            ]
+        }
+    ]
+}
