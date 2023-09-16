@@ -71,7 +71,15 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
+  //to be able to append family json file
     res.status(200).json(newChildren);
+  if (res == 200) {
+    readAndAppend(newChildren, '../../db/family/family.json');
+    res.json(`grandchildData added successfully`);
+  } else {
+    res.error('Error in adding grandchildData');
+  }
+
   } catch (err) {
     res.status(400).json(err);
   }
