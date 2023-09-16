@@ -30,11 +30,38 @@ router.post('/', async (req, res) => {
       req.session.logged_in = true;
 
       res.status(200).json(userData);
+
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+// router.post('/', async (req, res) => {
+//   try {
+//     // Create a new user
+//     const userData = await User.create(req.body);
+
+//     // If user data was successfully created
+//     if (userData) {
+//       // Save user information in the session
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+
+//       // Add user data to a JSON file
+//       readAndAppend(userData, '../../db/family/family.json');
+
+//       // Respond with a success message
+//       res.status(200).json({ message: 'User and grandchildData added successfully', userData });
+//     } else {
+//       // Handle the case where user data creation failed
+//       res.status(500).json({ error: 'Error in adding user and grandchildData' });
+//     }
+//   } catch (err) {
+//     // Handle other errors
+//     res.status(400).json({ error: err.message });
+//   }
+// });
 
 router.post('/login', async (req, res) => {
   try {
@@ -61,6 +88,7 @@ router.post('/login', async (req, res) => {
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
+
     });
 
   } catch (err) {
@@ -97,7 +125,7 @@ router.post('/logout', (req, res) => {
 });
 
 
-
+//http://localhost:3001/api/users/signup
 router.post('/signup', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -107,6 +135,13 @@ router.post('/signup', async (req, res) => {
       req.session.logged_in = true;
 
       res.status(200).json(userData);
+
+      // if (res.status == 200) {
+      //   readAndAppend(userData, '../../db/family/family.json');
+      //   res.json(`grandchildData added successfully`);
+      // } else {
+      //   res.error('Error in adding grandchildData');
+      // }
     });
   } catch (err) {
     res.status(400).json(err);

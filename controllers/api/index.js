@@ -3,6 +3,7 @@ const userRoutes = require('./userRoutes');
 const ChildrenRoutes = require('./ChildrenRoutes');
 const GrandChildrenRoutes = require('./ChildrenRoutes');
 
+//http://localhost:3001/api/users/
 router.use('/users', userRoutes);
 
 //http://localhost:3001/api/children/

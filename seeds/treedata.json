@@ -1,4 +1,4 @@
-
+// [  required for json format but can't read do D3 can read in this format 
 {
     "name": "user",
     "children": [
@@ -33,3 +33,4 @@
         }
     ]
 }
+// ]

@@ -52,32 +52,23 @@ router.post('/', withAuth, async (req, res) => {
     const newGrandChildren = await GrandChildren.create({
       ...req.body,
       user_id: req.session.user_id,
+
+      
+      
     });
 
     res.status(200).json(newGrandChildren);
+  if (res == 200) {
+    readAndAppend(newGrandChildren, '../../db/family/family.json');
+    res.json(`grandchildData added successfully`);
+  } else {
+    res.error('Error in adding grandchildData');
+  }
+
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-// router.delete('/:id', withAuth, async (req, res) => {
-//   try {
-//     const ChildrenData = await Children.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
-
-//     if (!ChildrenData) {
-//       res.status(404).json({ message: 'No Children found with this id!' });
-//       return;
-//     }
-
-//     res.status(200).json(ChildrenData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
