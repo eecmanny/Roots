@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     // we will try to find all grandchildren
-    // be sure to include its associated Product data
+    // be sure to include its associated children data
     const GrandChildrenData = await GrandChildren.findAll({
       //It filters GrandChildren records where the id column matches the user_id stored in the user's session. This is likely used to retrieve only the GrandChildren associated with the currently authenticated user.
       where: {
@@ -15,7 +15,6 @@ router.get('/', withAuth, async (req, res) => {
       include: [
         {
           model: Children,
-          // attributes: ["product_name", "price", "stock", "category_id"],
         },
       ]
 
@@ -38,16 +37,8 @@ router.get('/:id', withAuth, async (req, res) => {
       include: [
           {
               model: Children,
-              // attributes: ["catagory_name"],
           },
-          //         {
-          //     model: Tag,
-          //     attributes: ["product_name"],
-          // },
-          //         {
-          //     model: ProductTag,
-          //     attributes: ["card_number", "reader_id"],
-          // },
+
       ],
   })
     res.status(200).json(singleGrandChildData);
