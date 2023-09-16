@@ -33,7 +33,6 @@ router.get('/', withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          // attributes: ["product_name", "price", "stock", "category_id"],
         },
       ]
 
@@ -47,6 +46,23 @@ router.get('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+router.get('/:id', withAuth, async (req, res) => {
+    try {
+    const singleChildData = await Children.findByPk(req.params.id, {
+      include: [
+          {
+              model: User,
+          },
+
+      ],
+  })
+    res.status(200).json(singleChildData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.post('/', withAuth, async (req, res) => {
   try {
