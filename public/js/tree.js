@@ -1,6 +1,6 @@
 
 // Grabs hold of the JSON data
-fetch('..seeds/treedata.json')
+fetch('../../seeds/treedata.json')
 .then(function(resp){
     return resp.json();
 })
