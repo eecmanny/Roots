@@ -4,7 +4,8 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   try {
-    const currentUser = await User.findOne({
+    console.log(req.session.user_id);
+    const currentUser = await User.findAll({
       where: {
         id: req.session.user_id
       },
@@ -67,6 +68,24 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// router.get('/login', withAuth, async (req, res) => {
+//   try {
+//     const currentUser = await User.findOne({
+//       where: {
+//         id: req.session.user_id
+//       },
+//       include:[Children , GrandChildren]
+//       //   ...req.body,
+//       //   user_id: req.session.user_id,
+//     }
+//     );
+
+//     res.status(200).json(currentUser);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -76,6 +95,8 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
 
 router.post('/signup', async (req, res) => {
   try {
