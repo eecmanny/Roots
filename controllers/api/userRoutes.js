@@ -148,4 +148,21 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+//This sign up works it not writing to the JSON file
+// router.post('/signup', async (req, res) => {
+//   try {
+//     const userData = await User.create(req.body);
+//     if (userData) {
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+//       readAndAppend(userData, '../../db/family/family.json');
+//       return res.status(200).json(`Grandchild data added successfully`);
+//     } else {
+//       return res.status(400).json('Error in adding grandchild data');
+//     }
+//   } catch (err) {
+//     return res.status(500).json('Internal server error');
+//   }
+// });
+
 module.exports = router;
