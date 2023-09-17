@@ -6,85 +6,27 @@
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Fill in the questionnaire to get started!</h3>
+    <h3>Please enter your first child to get started!</h3>
 
-    <form class="form new-family-tree-form"></form>
+    <form class="form new-family-tree-form">
 
-      <div class="full-name">
+      <div class="form-group">
         <label for="full-name">Full Name:</label>
         <input class="form-input" type="text" id="full-name" name="full-name"/>
       </div>
 
-      <div class="relationship-too">
+      <div class="form-group">
         <label for="relationship">Related too:</label>
-        <input class="form-input" type="dropdown" id="relationship" name="relationship" />
+        <input class="form-input" type="text" id="relationship" name="relationship" />
       </div>
 
-      {{!-- <div class="last-name">
-        <label for="last-name">Last name:</label>
-        <input class="form-input" type="text" id="last-name" name="last-name"/>
+
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
       </div>
-
-      <div class="age">
-        <label for="age">Age</label>
-        <input class="form-input" type="number" id="age" name="age"/>
-      </div>
-
-      <div class="sex">
-        <label for="sex">Sex</label>
-        <input class="form-input" type="text" id="sex" name="sex"/>
-      </div> --}}
-
-      <div class="form new-family-tree-form">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-
-      </form>
-  </div>
-
-  {{!-- <div class='add-family'>
-    <h2>
-      Fill out the information below to add your family!
-    </h2>
-    <form class='add-family'>
-      <label for='first_name'>
-        First Name:
-      </label>
-      <br />
-      <textarea id='first_name' name='first_name' rows='2' cols='30'>
-        {{first_name}}
-      </textarea>
-      <br />
-      <label for='last-name'>
-        last-name: 
-      </label>
-      <br />
-      <textarea id='last-name' name='last-name' rows='5' cols='30'>
-        {{last-name}}
-      </textarea>
-      <br />
-      <label for='sex'>
-        Sex:
-      </label>
-      <br />
-      <textarea id='sex' name='sex' rows='2' cols='30'>
-        {{sex}}
-      </textarea>
-      <br />
-      <br />
-      <input type='dropdoqn' id='select-family-child' name='select-family-child' />
-      <label for='select-family-child'>
-        Dropdown to select family child:
-      </label>
-      <br />
-      <button type='submit' value='Submit'>
-        Submit
-      </button>
     </form>
+    </div>
   </div>
-</div>
- --}}
 
- 
 
 <script src="../public/js/survey.js"></script>
