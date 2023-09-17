@@ -58,12 +58,12 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     res.status(200).json(newGrandChildren);
-  if (res == 200) {
-    readAndAppend(newGrandChildren, '../../db/family/family.json');
-    res.json(`grandchildData added successfully`);
-  } else {
-    res.error('Error in adding grandchildData');
-  }
+  // if (res == 200) {
+  //   readAndAppend(newGrandChildren, '../../db/family/family.json');
+  //   res.json(`grandchildData added successfully`);
+  // } else {
+  //   res.error('Error in adding grandchildData');
+  // }
 
   } catch (err) {
     res.status(400).json(err);
