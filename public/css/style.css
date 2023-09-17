@@ -1,6 +1,31 @@
-header, .project:not(:last-child) {
+
+body{
+
+  background-image:url(/assets/images/Family-Tree-PNG-Picture.png);
+  
+  
+  background-color: rgb(103, 204, 99);
+  
+  }  
+
+.main-logo{
+  width: 100px;
+  border: 2px solid #eff5ea;
+}
+.navbar-item{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 50px;
+}
+.description{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 30px;
+  color: honeydew;
+}
+
+/* header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
+
 
 .no-button {
   background: none;
@@ -21,4 +46,4 @@ header, .project:not(:last-child) {
   color: #056605;
   font-weight: bold;
   margin-left: -5px;
-}
+} */

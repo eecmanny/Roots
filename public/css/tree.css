@@ -1,4 +1,4 @@
-div.tooltip {	
+/* div.tooltip {	
     position: absolute;			
     text-align: center;			
     width: 60px;					
@@ -19,9 +19,14 @@ color:#fff;
 
 body{
 position: relative;
-background-color: gray;
+background-image:url(/assets/images/Family-Tree-PNG-Picture.png);
+top:50px;
+left: 20%;
 
-}        
+background-color: rgb(103, 204, 99);
+
+}   
+
 
 #chart{
 overflow:visible;
@@ -88,4 +93,4 @@ background-color: black;
 color: #fff;
 min-width: 120px;
 
-}
+} */
