@@ -5,16 +5,14 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   try {
-    // we will try to find all grandchildren
-    // be sure to include its associated children data
     const GrandChildrenData = await GrandChildren.findAll({
-      //It filters GrandChildren records where the id column matches the user_id stored in the user's session. This is likely used to retrieve only the GrandChildren associated with the currently authenticated user.
       where: {
         id: req.session.user_id
       },
       include: [
         {
-          model: Children,
+          model: Children
+          // model: [Children, User]
         },
       ]
 
@@ -47,28 +45,31 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
+// router.post('/', withAuth, async (req, res) => {
+//   try {
+//     const newGrandChildren = await GrandChildren.create({
+//       ...req.body,
+//       user_id: req.session.user_id,
+
+      
+      
+//     });
+
+//     res.status(200).json(newGrandChildren);
+
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
 router.post('/', withAuth, async (req, res) => {
-  try {
-    const newGrandChildren = await GrandChildren.create({
-      ...req.body,
-      user_id: req.session.user_id,
-
-      
-      
-    });
-
-    res.status(200).json(newGrandChildren);
-  // if (res == 200) {
-  //   readAndAppend(newGrandChildren, '../../db/family/family.json');
-  //   res.json(`grandchildData added successfully`);
-  // } else {
-  //   res.error('Error in adding grandchildData');
-  // }
-
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  // create a new child
+      try {
+      const newGrandChildata = await GrandChildren.create(req.body);
+      res.status(200).json(newChildata);
+    } catch (err) {
+      res.status(400).json(err);
+    }
 });
-
 
 module.exports = router;
