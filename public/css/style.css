@@ -1,7 +1,7 @@
 
 body{
 
-  background-image:url(/assets/images/Family-Tree-PNG-Picture.png);
+  /* background-image:url(/assets/images/Family-Tree-PNG-Picture.png); */
   
   
   background-color: rgb(103, 204, 99);
@@ -20,6 +20,23 @@ body{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 30px;
   color: honeydew;
+}
+
+.survey {
+  display: flex;
+  justify-content: space-around;
+  background-color: #749DAD;
+  background: white;
+  border-radius: 10px;
+  margin: 8%;
+  /* max-width: auto; */
+  outline: 10px ridge grey;
+}
+
+.family {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 /* header, .project:not(:last-child) {
