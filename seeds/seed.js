@@ -12,7 +12,7 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
+console.log(users);
   // process.exit(0);
 };
 
@@ -23,7 +23,7 @@ const seedChildDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
+    console.log(children);
 };
 
 const seedgrandChildDatabase = async () => {
