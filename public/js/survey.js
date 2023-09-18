@@ -1,15 +1,15 @@
 surveyFormHandler = async (event) => {
   event.preventDefault();
 
-  let FullName = document.querySelector('#full-name').value.trim();
-  let RelativedTo = document.querySelector('#relationship').value.trim();
+  let fullName = document.querySelector('#full-name').value.trim();
+  let relative_to = document.querySelector('#relationship').value.trim();
 
-  console.log(FullName, RelativedTo);
+  console.log(fullName, relative_to);
 
-  if (FullName && RelativedTo) {
+  if (fullName && relative_to) {
     const response = await fetch('/api/children', {
       method: 'POST',
-      body: JSON.stringify({ FullName, RelativedTo }),
+      body: JSON.stringify({ fullName, relative_to }),
       headers: { 'Content-Type': 'application/json' },
     });
 
