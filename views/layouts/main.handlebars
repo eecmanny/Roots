@@ -24,10 +24,14 @@
 
       <div id="buttons" class="navbar-item">
         <div class="buttons">
+
+        {{#if logged_in}}
+        {{else}}
           <a id="signupButton" class="button is-success" href="/signup">
-          
             <strong>Sign up</strong>
           </a>
+        {{/if}}
+
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
           <a class="button is-success is-light" id="logout" href="/login">
