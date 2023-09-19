@@ -1,16 +1,28 @@
-<!-- Loop over each object in the children array -->
-{{#each children as |children| }}
-<div>
-  <div class="container is-max-desktop has-text-centered">
+<html>
+
+  <main id="border" class="container container-fluid mt-5 has-text-centered">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+      <h2 id="opener">Welcome to Roots!</h2>
+      <div class ="description">Find your family tree. Add to, create, and learn about your family roots!</div>
+      <div class="family">
+      <span style='font-size:100px;'>&#128106;</span>
+      <span style='font-size:100px;'>&#128107;</span>
+      <span style='font-size:100px;'>&#128108;</span>
+      <span style='font-size:100px;'>&#128109;</span>
+      </div>
+
+<div id="add" class="container is-max-desktop has-text-centered">
     <a class="button is-large is-success is-light is-centered" href="/survey">
             Add A Family Member
           </a>
   </div>
     
-  <div class="container is-max-desktop has-text-centered">
+  <div id="view" class="container is-max-desktop has-text-centered">
     <a class="button is-large is-success is-light is-centered" href="/tree">
             View Family Tree
           </a>
   </div>
-</div>
-{{/each}}
+</main>
+
+</html>
