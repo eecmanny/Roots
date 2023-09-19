@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="html" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -11,34 +11,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">Roots</a>
     <div>
-        <span style='font-size:100px;'>&#127795;</span>
-        {{!-- <span role="img" aria-label="tree">🌳</span> --}}
-
+        <span style='font-size:60px;'>&#127795;</span>
     </div>
-    {{!-- <img src="../../assets/images/Family-Tree-PNG-Picture.png" alt="logo" style="width:75px;height:75px;"> --}}
-
-    
   </div>
     
+
     <div class="navbar-end">
 
-      <div class="navbar-item">
+      <div id="buttons" class="navbar-item">
         <div class="buttons">
-          <a class="button is-small is-success" href="/signup">
+          <a id="signupButton" class="button is-success" href="/signup">
           
             <strong>Sign up</strong>
           </a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-          <a class="button is-small is-success is-light" id="logout" href="/login">
+          <a class="button is-success is-light" id="logout" href="/login">
             Logout
           </a>
         {{else}}
-          <a class="button is-small is-success is-light" href="/login">
+          <a class="button is-success is-light" href="/login">
             Log in
           </a>
         {{/if}}
@@ -48,30 +44,13 @@
   </div>
 </nav>
 
-<main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
-      <div class ="description">Find your family tree. Add to, create, and learn about your family roots!</div>
-      <div class="family">
-      <span style='font-size:100px;'>&#128106;</span>
-      <span style='font-size:100px;'>&#128107;</span>
-      <span style='font-size:100px;'>&#128108;</span>
-      <span style='font-size:100px;'>&#128109;</span>
-      </div>
 
-      {{!-- <img src="../../assets/images/family.jpg" alt="family" style="width:75px;height:75px;"> --}}
-
-
-    </main>
     <footer class="has-text-centered">
       <p>
-        Please contact us at
-      <a href="*">(800)-555-ROOT</a>
-        and 
-        <a href="*">roots@gmail.com</a>
-
+        Please contact us at (800)-555-ROOT and roots@gmail.com
       </p>
-
     </footer>
 
 <body>
@@ -81,7 +60,6 @@
   <script type="application/javascript" src="/js/survey.js"></script>
   <script type="application/javascript" src="/js/logout.js"></script>
   {{/if}}
-
 
 </body>
 

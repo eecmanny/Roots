@@ -1,12 +1,6 @@
-
-body{
-
-  /* background-image:url(/assets/images/Family-Tree-PNG-Picture.png); */
-  
-  
-  background-color: rgb(103, 204, 99);
-  
-  }  
+#html {
+  background-color: rgb(165, 247, 165);
+}
 
 .main-logo{
   width: 100px;
@@ -14,24 +8,15 @@ body{
 }
 .navbar-item{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 50px;
+  font-size: 35px;
 }
+
 .description{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 30px;
   color: honeydew;
 }
 
-.survey {
-  display: flex;
-  justify-content: space-around;
-  background-color: #749DAD;
-  background: white;
-  border-radius: 10px;
-  margin: 8%;
-  /* max-width: auto; */
-  outline: 10px ridge grey;
-}
 
 .family {
   display: flex;
@@ -64,3 +49,52 @@ body{
   font-weight: bold;
   margin-left: -5px;
 } */
+
+
+#border {
+  border: 5px rgb(16, 140, 16);
+  border-style: solid;
+  border-radius: 20px;
+  background-color: rgb(103, 204, 99);
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#opener {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 40px;
+  color: honeydew;
+}
+
+#add{
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 10px;
+}
+
+#title {
+  font-size: large;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#spacing{
+  margin-bottom: 10px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+
+footer {
+  margin-top: auto;
+}

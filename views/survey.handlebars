@@ -1,27 +1,24 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome to Roots!</h2>
-  </div>
-</div>
 
-<div class="row mt-4 survey">
-  <div class="col-md-6">
-    <h3>Please enter your first child to get started!</h3>
 
+<div id="border" class="row mt-4 survey has-text-centered">
+        {{{ body }}}
+        <h2 id="title">Survey</h2>
+  
+  <div class="mt-2 col-md-6">
     <form class="form new-family-tree-form">
 
-      <div class="form-group">
+      <div id="spacing" class="form-group">
         <label for="full-name">Full Name:</label>
         <input class="form-input" type="text" id="full-name" name="full-name"/>
       </div>
 
-      <div class="form-group">
-        <label for="relationship">Related too:</label>
+      <div id="spacing" class="form-group">
+        <label for="relationship">Related to:</label>
         <input class="form-input" type="number" id="relationship" name="relationship" />
       </div>
 
 
-      <div class="form-group">
+      <div id="spacing" class="form-group">
         <button class="btn btn-primary" type="submit" id ="submit">Submit</button>
       </div>
     </form>
