@@ -1,303 +1,181 @@
-
-// Grabs hold of the JSON data
-fetch('../../seeds/treedata.json')
-.then(function(resp){
-    return resp.json();
-})
-.then(function(data){
-    console.log("Test")
-   parentFunction(data);
-});
-
-function parentFunction(jsondata){
-
-
-console.log("the data is")
-console.log(jsondata)
-
-
-let mouseX = 0;
-//these global variables I should later get via closure
-let buttonTracker = [];
-let rootNode = d3.hierarchy(jsondata, d=>d.children);
-// Using the .links method to get the paths array
-var pathLinks = rootNode.links(); 
-var updatePathLinks;
-
-// Using the .descendants method to get the circles array
-var circleLinks = rootNode.descendants();
-var updateCircleLinks;
-
-// Using the .descendants method to get the circles array
-var textLinks = rootNode.descendants();
-var updateTextLinks;
-
-
-let dim = {
-    'width': window.screen.width / 2, 
-    'height':window.screen.height / 2   , 
-    'margin':50    
+const treeData = {
+    "name": "User",
+    "value": 15,
+    "type": "black",
+    "level": "yellow",
+    "children": [
+        {
+            "name": "Lin Smtih",
+            "value": 10,
+            "type": "grey",
+            "level": "red"
+        },
+        {
+            "name": "Manny Smtih",
+            "value": 10,
+            "type": "grey",
+            "level": "red",
+            "children": [
+                {
+                    "name": "Seth Smtih",
+                    "value": 7.5,
+                    "type": "grey",
+                    "level": "purple"
+                },
+                {
+                    "name": "Aaliyah Smith",
+                    "value": 7.5,
+                    "type": "grey",
+                    "level": "purple"
+                }
+            ]
+        },
+        {
+            "name": "Wren Smith",
+            "value": 10,
+            "type": "grey",
+            "level": "blue"
+        },
+        {
+            "name": "Giselle Smith",
+            "value": 10,
+            "type": "grey",
+            "level": "green",
+            "children": [
+                {
+                    "name": "Hugo Smith",
+                    "value": 7.5,
+                    "type": "grey",
+                    "level": "orange"
+                }
+            ]
+        },
+        {
+            "name": "Azura Smith",
+            "value": 10,
+            "type": "grey",
+            "level": "green"
+        }
+    ]
 };
 
-let svg = d3.select('#chart').append('svg')
-     .style('background', 'black')   
-     .attrs(dim);
+//   const treeData = {
+//     "name": "Adam",
+//     "value": 15,
+//     "type": "black",
+//     "level": "yellow",
+//     "children": [
+//       {
+//         "name": "Cain",
+//         "value": 10,
+//         "type": "grey",
+//         "level": "red"
+//       },
+//       {
+//         "name": "Seth",
+//         "value": 10,
+//         "type": "grey",
+//         "level": "red",
+//         "children": [
+//           {
+//             "name": "Enos",
+//             "value": 7.5,
+//             "type": "grey",
+//             "level": "purple"
+//           },
+//           {
+//             "name": "Noam",
+//             "value": 7.5,
+//             "type": "grey",
+//             "level": "purple"
+//           }
+//         ]
+//       },
+//       {
+//         "name": "Abel",
+//         "value": 10,
+//         "type": "grey",
+//         "level": "blue"
+//       },
+//       {
+//         "name": "Awan",
+//         "value": 10,
+//         "type": "grey",
+//         "level": "green",
+//         "children": [
+//           {
+//             "name": "Enoch",
+//             "value": 7.5,
+//             "type": "grey",
+//             "level": "orange"
+//           }
+//         ]
+//       },
+//       {
+//         "name": "Azura",
+//         "value": 10,
+//         "type": "grey",
+//         "level": "green"
+//       }
+//     ]
+//   };
 
+// set the dimensions and margins of the diagram
+const margin = { top: 20, right: 90, bottom: 30, left: 90 },
+    width = 660 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-document.querySelector("#chart").classList.add("center");
+// declares a tree layout and assigns the size
+const treemap = d3.tree().size([height, width]);
 
-//let rootNode = d3.hierarchy(data);
+//  assigns the data to a hierarchy using parent-child relationships
+let nodes = d3.hierarchy(treeData, d => d.children);
 
+// maps the node data to the tree layout
+nodes = treemap(nodes);
 
+// append the svg object to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+const svg = d3.select("body").append("svg")
+    //   .attr("width", width + margin.left + margin.right)
+    //   .attr("height", height + margin.top + margin.bottom),
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 960 500")
+g = svg.append("g")
+    .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
 
-
-let g = svg.append('g')
-            .attr('transform', 'translate(140,50)');
-
-    let layout = d3.tree().size([dim.height-50, dim.width-320]);
-
-    layout(rootNode);
-    console.log(rootNode.links());
-    console.log("----------------------");
-    console.log(rootNode.descendants());
-    //console.log(rootNode.descendants());
-   //first lets create a path 
-   let lines = g.selectAll('path');  
-
-
-
-function update(data){
-
-
-// Function to create paths between
-let group =  g.selectAll('path')
-//.data function needs a unique attribute to determine a path. example .name is being using in the JSON file but you could use other stuff like id or values
-    .data(data, (d,i) => d.target.data.name)
-    .join(
-    function(enter){
-        return enter.append('path')
-                    .attrs({
-                        //custom attributs per elemets
-                        'd': d3.linkHorizontal()
-                        .x(d => mouseX)
-                         .y(d => d.x),
-                     'fill':'none',
-                     'stroke':'white'
-                    })
-    },
-    function(update){
-        return update;
-    },
-    function(exit){
- 
-
-
-        return exit.call(path => path.transition().duration(300).remove()
-                                                .attr('d', d3.linkHorizontal()
-                                                              .x(d => mouseX)
-                                                              .y(d =>d.x)));
-    }
-
-
-)
-.call(path => path.transition().duration(1000).attr('d', d3.linkHorizontal()
-        .x(d => d.y)
-         .y(d => d.x))
-         .attr("id", function(d,i){return "path"+i}));
-
-
-}
-update(pathLinks); //rootNode.links()
-
-
-// functions for the circles
-function updateCircles(data){
-    g.selectAll('circle')
-    .data(data, (d) => d.data.name)
-    .join(
-        function(enter){
-            return enter.append('circle')
-                        .attrs({
-                            'cx':(d)=> mouseX,
-                            'cy':(d) => d.x,
-                            'r':12,
-                            'fill':(d) => {
-                                if(d.children == undefined){
-                                    return 'red'
-                                }
-                                return 'green'
-                            },
-                            'id': (d,i) =>d.data.name,
-                            'class':'sel'                           
-                        })
-        },
-        function(update){
-            return update;
-        },
-        function(exit){
-
-            return exit.call(path => path.transition().duration(300).remove()
-            .attrs({
-                'cx':(d) =>mouseX,
-                'r':(d) => 0
-            }));
-
-        }
-
-
-    )
-    .call(circle => circle.transition().duration(1000).attr('cx', (d)=>d.y))
-
-    .on('mouseover', function(d){
-
-       d3.select(this)
-           .attrs({                
-               'fill':'orange',
-
-           })
-           .transition().duration(100).attr('r', 16);
-    })
-    .on('mouseout', function(d){
-       d3.select(this)
-           .attr('fill', (d)=>{
-                if(d.children ==undefined){
-                    return 'red'
-                }
-                return 'green'
-           })
-           .transition().duration(100).attr('r', 12)
-
-    })
-    .on('click', async function(d){
-
-           let buttonId = d3.select(this)["_groups"][0][0]["attributes"].id.value;
-           mouseX = d3.select(this)["_groups"][0][0]["attributes"].cx.value;
-           //check to see if button already exists aka has been clicked
-           //if it does, we need to send that data to update function
-           //and remove that object
-
-           let checkButtonExists = buttonTracker.filter(button => button.buttonId == buttonId);
- 
-           if(checkButtonExists[0]!=undefined){
-                //also remove this item from button tracker
-               buttonTracker = buttonTracker.filter(button => button.buttonId != buttonId);
-               
-               //handle path update
-               pathLinks = checkButtonExists[0].buttonPathData.concat(pathLinks);
-                              
-               update(pathLinks);
-
-
-                //handle  circle update
-               circleLinks = checkButtonExists[0].buttonCircleData.concat(circleLinks);
-                 updateCircles(circleLinks);
-
-                 //handle text update
-
-                textLinks =checkButtonExists[0].buttonTextData.concat(textLinks);
-                updateText(textLinks);
-
-                return;
-
-           }
-
-           var valueArray = await processedlinks(d.links());   
-
-           updatePathLinks = pathLinks.filter(function(item){        
-                   return !valueArray.includes(item.target.data.name);                                       
-           });
-
-           //now run the filter to get unfiltered items
-           var clickedPathData = pathLinks.filter(function(item){
-            return valueArray.includes(item.target.data.name);
-            });
-
-
-           updateCircleLinks = circleLinks.filter(function(item){
-                    return !valueArray.includes(item.data.name);
-           });
-
-           var clickedCircleData = circleLinks.filter(function(item){
-                    return valueArray.includes(item.data.name);
-           });
-        
-        
-           updateTextLinks = textLinks.filter(function(item){
-                    return !valueArray.includes(item.data.name);
-           });
-
-           var clickedTextData = textLinks.filter(function(item){
-                    return valueArray.includes(item.data.name);
-           });
-
-           //now we push the circleData to an array
-           buttonTracker.push({
-               buttonId:buttonId,
-               buttonPathData: clickedPathData,
-               buttonCircleData:clickedCircleData,
-               buttonTextData:clickedTextData
-           })
-
-           
-           update(updatePathLinks);
-           updateCircles(updateCircleLinks);
-           updateText(updateTextLinks);
-          async function processedlinks(dlinks) {
-           var valueArray = [];
-    
-               return new Promise((resolve, reject)=>{
-                     dlinks.forEach(async(element) =>{
-                          valueArray.push(element.target.data.name); 
-                     });
-                     resolve(valueArray);      
-               });
-           }
-
-           pathLinks = updatePathLinks;
-           circleLinks = updateCircleLinks;
-           textLinks = updateTextLinks;
-
+// adds the links between the nodes
+const link = g.selectAll(".link")
+    .data(nodes.descendants().slice(1))
+    .enter().append("path")
+    .attr("class", "link")
+    .style("stroke", d => d.data.level)
+    .attr("d", d => {
+        return "M" + d.y + "," + d.x
+            + "C" + (d.y + d.parent.y) / 2 + "," + d.x
+            + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
+            + " " + d.parent.y + "," + d.parent.x;
     });
 
+// adds each node as a group
+const node = g.selectAll(".node")
+    .data(nodes.descendants())
+    .enter().append("g")
+    .attr("class", d => "node" + (d.children ? " node--internal" : " node--leaf"))
+    .attr("transform", d => "translate(" + d.y + "," + d.x + ")");
 
-}
+// adds the circle to the node
+node.append("circle")
+    .attr("r", d => d.data.value)
+    .style("stroke", d => d.data.type)
+    .style("fill", d => d.data.level);
 
-updateCircles(rootNode.descendants());
- 
-//Function for the text
-function updateText(data){
-
-    g.selectAll('text')
-      .data(data, (d) =>d.data.name)
-      .join(
-        function(enter){
-            return enter.append('text')
-                        .attrs({
-                            'x': (d) =>mouseX,
-                            'y':(d) => d.x,
-                            'font-size':0
-                        })
-                        .text((d) => d.data.name);
-        },
-        function(update){
-            return update;
-        },
-        function(exit){
-                return exit.call(text => text.transition().duration(300).remove().attrs({
-                       'x':(d) => mouseX,
-                       'font-size':0 
-                }));   
-        }
-
-      )
-      //transistion effects
-      .call(text => text.transition().duration(1000).attrs({
-          'x':(d) =>d.y+20,
-          'font-size':15,
-          'fill':'yellow',
-        }));
-}
-
-updateText(textLinks);
-
-}
+// adds the text to the node
+node.append("text")
+    .attr("dy", ".35em")
+    .attr("x", d => d.children ? (d.data.value + 5) * -1 : d.data.value + 5)
+    .attr("y", d => d.children && d.depth !== 0 ? -(d.data.value + 5) : d)
+    .style("text-anchor", d => d.children ? "end" : "start")
+    .text(d => d.data.name);
