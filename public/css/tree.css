@@ -1,96 +1,23 @@
-/* div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 60px;					
-    height: 28px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
-}
+body {
+    /* background-color: #eee; */
+    background-color: rgb(103, 204, 99);
+  }
+  
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+  
+  .node text { font: 16px sans-serif; }
+  
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+  }
 
-p {
-font-size: 14px;
-color:#fff;
-
-}        
-
-body{
-position: relative;
-background-image:url(/assets/images/Family-Tree-PNG-Picture.png);
-top:50px;
-left: 20%;
-
-background-color: rgb(103, 204, 99);
-
-}   
-
-
-#chart{
-overflow:visible;
-}
-
-.center {
-position: absolute;
-top:50px;
-left: 50%;
-transform: translateX(-50%);
-}
-
-.svg {
-position: absolute;
-top:50%;
-left:50%;
-}        
-
-
-.buttonGroup {
-display: flex;
-justify-content: center;
-
-
-}  
-
-.buttonGroup button{
-width:120px;
-height:30px;
-border-radius: 5px;
-border: none;
-color: #fff;
-font-size: 16px;
-cursor: pointer;   
-outline: none;     
-transition: transform .5s;
-}   
-
-.buttonGroup button:active{
-transform: scale(1.2);
-}  
-
-.unselected {
-background-color: rgb(77, 60, 224);
-
-}
-
-.selected{
-background-color: rgb(12, 189, 50);
-}
-
-.buttonGroup button:nth-child(2){
-margin:0 10px;
-}
-.buttonGroup button:nth-child(3){
-margin-right:10px;
-}
-
-.tooltip {
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: black;
-color: #fff;
-min-width: 120px;
-
-} */
+  svg {
+    display: block;
+    margin: auto;
+  }
